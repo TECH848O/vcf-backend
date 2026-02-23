@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+body { font-family:Arial; background:#020617; color:white; padding:20px; transition: all 0.5s ease; display:flex; flex-direction:column; min-height:100vh;}
+body.light { background:#f5f5f5; color:#111;}
+.page { opacity:0; transform:translateY(10px); transition:all 0.5s ease;}
+.page.loaded { opacity:1; transform:translateY(0);}
+.top { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;}
+.btn { background:#22c55e; padding:10px 15px; border-radius:6px; text-decoration:none; color:white; margin:5px;}
+.card { background:#1e293b; padding:20px; border-radius:10px; margin-top:20px; transition: transform 0.3s ease, box-shadow 0.3s ease;}
+.card:hover { transform:translateY(-5px); box-shadow:0 5px 15px rgba(0,0,0,0.3);}
+#toggleTheme { margin-bottom:10px; background:#64748b; color:white; border:none; border-radius:6px; padding:8px; cursor:pointer;}
+.footer { text-align:center; font-size:14px; color:#94a3b8; margin-top:auto; padding-top:20px;}
+.footer a { color:#38bdf8; text-decoration:none;}
+</style>
+</head>
+<body class="page">
+
+<div class="top">
+<h2>Your VCF Projects</h2>
+<div>
+<button id="toggleTheme">Toggle Dark/Light</button>
+<a class="btn" href="/create">+ Create</a>
+<a class="btn" href="/logout">Logout</a>
+</div>
+</div>
+
+{% for p in projects %}
+<div class="card">
+<h3>{{p[2]}}</h3>
+<p>Share Link:<br><a href="/add/{{p[3]}}" target="_blank">{{request.host_url}}add/{{p[3]}}</a></p>
+<a class="btn" href="/download/{{p[0]}}">Download VCF</a>
+</div>
+{% endfor %}
+
+<div class="footer">
+<p>© GenZICT TECH</p>
+<p>Join our WhatsApp channel for more files: <a href="https://whatsapp.com/channel/0029Vb128zjKbYMQUk4cEM1C" target="_blank">Click Here</a></p>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', ()=>{document.body.classList.add('loaded');});
+document.getElementById('toggleTheme').addEventListener('click', ()=>{document.body.classList.toggle('light');});
+</script>
+</body>
+</html>

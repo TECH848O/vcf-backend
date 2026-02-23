@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signup</title>
+<style>
+body {
+    font-family: Arial;
+    background: #020617;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: all 0.5s ease;
+}
+body.light {
+    background: #f5f5f5;
+    color: #111;
+}
+.page { opacity:0; transform:translateY(10px); transition:all 0.5s ease; }
+.page.loaded { opacity:1; transform:translateY(0);}
+.box { background:#1e293b; padding:30px; border-radius:12px; width:300px; margin-bottom:20px; }
+input { width:100%; padding:12px; margin:10px 0; border:none; border-radius:6px;}
+button { width:100%; padding:12px; background:#22c55e; border:none; color:white; border-radius:6px; cursor:pointer;}
+a { color:#38bdf8; text-decoration:none;}
+#toggleTheme { margin-bottom:10px; background:#64748b; color:white; border:none; border-radius:6px; padding:8px; cursor:pointer;}
+.footer { text-align:center; font-size:14px; color:#94a3b8; margin-top:20px; }
+.footer a { color:#38bdf8; text-decoration:none;}
+</style>
+</head>
+<body class="page">
+
+<div class="box">
+<button id="toggleTheme">Dark/Light</button>
+<h2>Create Account</h2>
+
+<form method="post" id="signupForm">
+
+<input type="text" name="username" placeholder="Username" required>
+
+<!-- Password field with eye -->
+<div class="input-container">
+  <input type="password" name="password" placeholder="Password" id="password" required>
+  <div class="eye-btn" id="togglePassword">
+    <div class="eye closed" id="eye">
+      <div class="pupil"></div>
+    </div>
+  </div>
+</div>
+
+<div class="input-container">
+  <input type="password" name="confirm_password" placeholder="Confirm Password" id="confirm_password" required>
+</div>
+
+<button type="submit">Signup</button>
+</form>
+<p style="text-align:center;">Already have account? <a href="/">Login</a></p>
+</div>
+
+<div class="footer">
+<p>© GenZICT TECH</p>
+<p>Join our WhatsApp channel for more files: <a href="https://whatsapp.com/channel/0029Vb128zjKbYMQUk4cEM1C" target="_blank">Click Here</a></p>
+</div>
+
+<script>
+// Page animation
+window.addEventListener('DOMContentLoaded', ()=>{document.body.classList.add('loaded');});
+
+// Dark/Light toggle
+document.getElementById('toggleTheme').addEventListener('click', ()=>{
+    document.body.classList.toggle('light');
+});
+
+// Show/Hide password & Eye animation
+const passwordInput = document.getElementById('password');
+const eyeDiv = document.getElementById('eye');
+const toggleBtn = document.getElementById('togglePassword');
+
+toggleBtn.addEventListener('click', ()=>{
+    if(passwordInput.type === "password"){
+        passwordInput.type = "text";
+        eyeDiv.classList.remove('closed'); // Eye open
+    } else {
+        passwordInput.type = "password";
+        eyeDiv.classList.add('closed'); // Eye closed
+    }
+});
+
+
+// Confirm password validation
+const form = document.getElementById('signupForm');
+form.addEventListener('submit', (e)=>{
+  if(passwordInput.value !== document.getElementById('confirm_password').value){
+    e.preventDefault();
+    alert("Passwords do not match!");
+    passwordInput.focus();
+  }
+});
+</script>
+</body>
+</html>
+  

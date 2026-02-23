@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Contact</title>
+<style>
+body{font-family:Arial; background:linear-gradient(135deg,#020617,#0f172a); color:white; display:flex; justify-content:center; align-items:center; min-height:100vh; flex-direction:column; transition: all 0.5s ease;}
+body.light{background:#f5f5f5; color:#111;}
+.page{opacity:0; transform:translateY(10px); transition:all 0.5s ease;}
+.page.loaded{opacity:1; transform:translateY(0);}
+.box{background:#1e293b; padding:30px; border-radius:10px; width:320px; margin-bottom:20px;}
+input, select{width:100%; padding:12px; margin:10px 0; border:none; border-radius:6px;}
+button{width:100%; padding:12px; background:#3b82f6; border:none; color:white; border-radius:6px; cursor:pointer;}
+.cta-box{background:#3b82f6; padding:15px; border-radius:10px; margin-top:20px; text-align:center; cursor:pointer; transition: transform 0.3s ease;}
+.cta-box:hover{transform:scale(1.05);}
+.footer{font-size:14px; color:#94a3b8; text-align:center; margin-top:20px;}
+.footer a{color:#38bdf8; text-decoration:none;}
+#toggleTheme{margin-bottom:10px; background:#64748b; color:white; border:none; border-radius:6px; padding:8px; cursor:pointer;}
+</style>
+</head>
+<body class="page">
+
+<div class="box">
+<button id="toggleTheme">Toggle Dark/Light</button>
+<h2>Add Contact</h2>
+<p>VCF: {{project[2]}}</p>
+<p><strong>Slots remaining:</strong> {{remaining}}</p>
+<form method="post">
+<select name="country_code" required>
+  <option value="+254">🇰🇪 Kenya +254</option>
+  <option value="+1">🇺🇸 USA +1</option>
+  <option value="+44">🇬🇧 UK +44</option>
+  <!-- Add more countries here -->
+</select>
+<input name="phone" placeholder="Enter number" required>
+<input name="name" placeholder="Full Name" required>
+<button>Submit</button>
+</form>
+</div>
+
+<!-- Call-to-Action for new admin -->
+<div class="cta-box" onclick="window.location.href='/signup'">
+Want to create your own VCF? Click here!
+</div>
+
+<div class="footer">
+<p>© GenZICT TECH</p>
+<p>Join our WhatsApp channel for more files: <a href="https://whatsapp.com/channel/0029Vb128zjKbYMQUk4cEM1C" target="_blank">Click Here</a></p>
+</div>
+
+<script>
+window.addEventListener('DOMContentLoaded', ()=>{document.body.classList.add('loaded');});
+document.getElementById('toggleTheme').addEventListener('click', ()=>{document.body.classList.toggle('light');});
+</script>
+</body>
+</html>

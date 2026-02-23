@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create VCF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial;background:#020617;color:white;display:flex;justify-content:center;align-items:center;height:100vh;}
+.box{background:#1e293b;padding:30px;border-radius:10px;width:350px;}
+input, select{width:100%;padding:12px;margin:10px 0;border:none;border-radius:6px;}
+button{width:100%;padding:12px;background:#22c55e;border:none;color:white;border-radius:6px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>Create VCF</h2>
+<form method="post">
+<input name="name" placeholder="VCF Name" required>
+<select name="limit">
+    <option value="0">Unlimited</option>
+</select>
+<button>Create</button>
+</form>
+</div>
+
+</body>
+</html>
